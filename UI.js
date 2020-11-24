@@ -15,4 +15,25 @@ class UI {
         contacts.appendChild(tr);
     }
 
+    alertMessage(message) {
+        //create div for alert message
+        const div = document.createElement('div');
+        //add class to div
+        div.className = "alert";
+        //create string value of message for div
+        const text = document.createTextNode(message);
+        //insert text into div
+        div.appendChild(text);
+
+        //find components - before and after alert div element
+        const card = document.querySelector('.card-content');
+        const form = document.querySelector('#contact-form');
+        //add alert info html
+        card.insertBefore(div, form);
+        //set alert message up to 5 seconds
+        setTimeout(function () {
+           document.querySelector(".alert").remove();
+        }, 5000);
+    }
+
 }

@@ -1,14 +1,6 @@
 // define variables
-// contact data
-const firstName = document.querySelector('#first_name');
-const lastName = document.querySelector('#last_name');
-const city = document.querySelector('#city');
-const street = document.querySelector('#street');
-const postCode = document.querySelector('#postcode');
-const phone = document.querySelector('#phone');
-const contact = [firstName, lastName, city, street, postCode, phone];
 
-// app data
+// app data html element
 const form = document.querySelector('#contact-form');
 const contacts = document.querySelector('#contacts-table');
 
@@ -19,15 +11,29 @@ form.addEventListener('submit', addContact);
 // project functions
 // addContact
 function addContact(e) {
-    if (firstName.value === '') {
-        alert("Add new contact data!")
+    // contact data from form element
+    const firstName = document.querySelector('#first_name').value;
+    const lastName = document.querySelector('#last_name').value;
+    const city = document.querySelector('#city').value;
+    const street = document.querySelector('#street').value;
+    const postCode = document.querySelector('#postcode').value;
+    const phone = document.querySelector('#phone').value;
+
+    //create new ui object
+    const ui = new UI();
+
+    //control form data
+    if (firstName.value === '' | lastName ==='' | city ==='' | street === '' | postCode ==='' | phone === '') {
+        ui.alertMessage("Add ALL new contact data!");
     } else {
-        const person = new Person(firstName.value, lastName.value, city.value, street.value, postCode.value, phone.value);
+        //create new person object with form data
+        const person = new Person(firstName, lastName, city, street, postCode, phone);
         console.log("Create user interface");
-        const ui = new UI();
+        //add person object data to html table
         ui.addPersonToTable(person);
-        e.preventDefault();
+
     }
+    e.preventDefault();
 }
 
 
