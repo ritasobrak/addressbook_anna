@@ -10,9 +10,16 @@ class UI {
                         <td>${person.street}</td>
                         <td>${person.postcode}</td>
                         <td>${person.phone}</td>
+                        <td><a href="#"><i class="fa fa-backspace"></i></a></td>
         `;
         // append tr to table
         contacts.appendChild(tr);
+    }
+
+    deletePersonFromTable(target)
+    {
+        const tr = target.closest("tr")
+        tr.remove();
     }
 
     alertMessage(message, style) {
