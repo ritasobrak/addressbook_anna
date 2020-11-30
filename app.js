@@ -24,13 +24,14 @@ function addContact(e) {
 
     //control form data
     if (firstName.value === '' | lastName ==='' | city ==='' | street === '' | postCode ==='' | phone === '') {
-        ui.alertMessage("Add ALL new contact data!");
+        ui.alertMessage("Add ALL new contact data!", "problem");
     } else {
         //create new person object with form data
         const person = new Person(firstName, lastName, city, street, postCode, phone);
         console.log("Create user interface");
         //add person object data to html table
         ui.addPersonToTable(person);
+        ui.alertMessage("Added contact to address book!", "ok");
 
     }
     e.preventDefault();
