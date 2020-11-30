@@ -42,5 +42,4 @@ class UI {
            document.querySelector(".alert").remove();
         }, 5000);
     }
-
 }
