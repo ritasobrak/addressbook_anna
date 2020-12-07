@@ -52,4 +52,8 @@ class UI {
         document.querySelector('#postcode').value = '';
         document.querySelector('#phone').value = '';
     }
+
+    clearContacts() {
+        contacts.innerHTML = '';
+    }
 }

@@ -107,8 +107,20 @@ function getContacts() {
 
 //clearContacts
 function clearContacts(e) {
-    e.preventDefault();
-    document.querySelectorAll("table tbody tr").forEach(function(e){e.remove()})
+    contacts.innerHTML = '';
+    //clear contacts from Local Storage
+    //create new ui object
+    const ui = new UI();
+    //create new Local Storage object
+    const ls = new LS();
+    const isCleared = ls.clearContacts();
+    if(isCleared) {
+        //add alert about it
+        ui.alertMessage("Contacts are cleared", "ok");
+    } else {
+        ui.alertMessage("Some problems, sorry", "problem");
+    }
+
 }
 
 
