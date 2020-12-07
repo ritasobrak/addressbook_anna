@@ -4,6 +4,7 @@
 const form = document.querySelector('#contact-form');
 const contacts = document.querySelector('#contacts-table');
 const clearBtn = document.querySelector('#clear-contacts');
+const filterInput = document.querySelector('#filter');
 
 // define event listeners
 //page reload event - get data from Local Storage
@@ -16,6 +17,9 @@ contacts.addEventListener('click', deleteContact);
 
 //clear all contacts from table
 clearBtn.addEventListener('click', clearContacts);
+
+//filter contacts
+filterInput.addEventListener('keyup', filterContacts);
 
 
 // project functions
@@ -121,6 +125,19 @@ function clearContacts(e) {
         ui.alertMessage("Some problems, sorry", "problem");
     }
 
+}
+
+//filterContacts
+function filterContacts(e) {
+    const text = e.target.value.toLowerCase();
+    for(i = 0; i < contacts.rows.length; i++) {
+        const contactData = contacts.rows[i].outerText.toLowerCase();
+        if(contactData.indexOf(text) != -1) {
+            contacts.rows[i].style.display = '';
+        } else {
+            contacts.rows[i].style.display = 'none';
+        }
+    }
 }
 
 
